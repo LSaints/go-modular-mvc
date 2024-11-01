@@ -8,11 +8,12 @@ services:
       - MYSQL_DATABASE=${MYSQL_DB}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_USER=${MYSQL_USER}           
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}     
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     ports:
       - '${MYSQL_PORT}:3306'
     volumes:
       - mysql-volume:/var/lib/mysql
+      - ./internal/core/user-management/sql/init.sql:/docker-entrypoint-initdb.d/user.sql
 volumes:
   mysql-volume:
     driver: local
