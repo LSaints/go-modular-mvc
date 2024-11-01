@@ -26,12 +26,12 @@ func loadViews(r *gin.Engine) error {
 	}
 
 	// feature: find all
-	findAllPage := filepath.Join(currentDir, "internal", "core", "user-management", "features", "find_all", "views", "list.html")
+	findAllPage := filepath.Join(currentDir, "internal", "core", "user-management", "features", "find_all", "web", "views", "list.html")
 
 	// feature: create
-	createPage := filepath.Join(currentDir, "internal", "core", "user-management", "features", "create", "views", "register.html")
-	successPage := filepath.Join(currentDir, "internal", "core", "user-management", "features", "create", "views", "success.html")
-	errorPage := filepath.Join(currentDir, "internal", "core", "user-management", "features", "create", "views", "error.html")
+	createPage := filepath.Join(currentDir, "internal", "core", "user-management", "features", "create", "web", "views", "register.html")
+	successPage := filepath.Join(currentDir, "internal", "core", "user-management", "features", "create", "web", "views", "success.html")
+	errorPage := filepath.Join(currentDir, "internal", "core", "user-management", "features", "create", "web", "views", "error.html")
 
 	r.LoadHTMLFiles(findAllPage, createPage, successPage, errorPage)
 
