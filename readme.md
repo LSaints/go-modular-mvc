@@ -13,7 +13,7 @@ Este projeto demonstra a aplicação dos conceitos de uma arquitetura monolític
 ## Estrutura do Projeto
 
 ```
-seu-projeto/
+go-modular-mvc/
 ├── cmd/
 │   └── app/
 │       └── main.go            # Entry point da aplicação
