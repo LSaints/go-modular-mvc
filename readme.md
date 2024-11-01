@@ -6,6 +6,9 @@ Uma aplicação web construída com Go, que implementa uma arquitetura monolíti
 
 Este projeto demonstra a aplicação dos conceitos de uma arquitetura monolítica modular, onde as diferentes funcionalidades são organizadas em módulos distintos. A separação de responsabilidades facilita a manutenção, a escalabilidade e a legibilidade do código.
 
+## Diagrama da arquitetura
+![diagrama](./docs/images/diagrama_modulos.drawio.png)
+
 
 ## Estrutura do Projeto
 
