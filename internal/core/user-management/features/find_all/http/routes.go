@@ -1,12 +1,12 @@
 package http
 
 import (
-	"github.com/gin-gonic/gin"
+	"github.com/LSaints/go-modular-mvc/internal/shared/http/interfaces"
 )
 
-func LoadRoutes(r *gin.Engine) {
+func LoadRoutes(r interfaces.Router) {
 	userRoutes := r.Group("/users")
 	{
-		userRoutes.GET("/", GetAllUsers)
+		userRoutes.GET("/users", GetAllUsers)
 	}
 }

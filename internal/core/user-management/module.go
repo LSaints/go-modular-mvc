@@ -6,20 +6,20 @@ import (
 
 	createRoute "github.com/LSaints/go-modular-mvc/internal/core/user-management/features/create/http"
 	findAllRoute "github.com/LSaints/go-modular-mvc/internal/core/user-management/features/find_all/http"
-	"github.com/gin-gonic/gin"
+	"github.com/LSaints/go-modular-mvc/internal/shared/http/interfaces"
 )
 
-func Load(r *gin.Engine) {
+func Load(r interfaces.Router) {
 	loadViews(r)
-	RegisterRoutes(r)
+	registerRoutes(r)
 }
 
-func RegisterRoutes(r *gin.Engine) {
+func registerRoutes(r interfaces.Router) {
 	findAllRoute.LoadRoutes(r)
 	createRoute.LoadRoutes(r)
 }
 
-func loadViews(r *gin.Engine) error {
+func loadViews(r interfaces.Router) error {
 	currentDir, err := os.Getwd()
 	if err != nil {
 		return err

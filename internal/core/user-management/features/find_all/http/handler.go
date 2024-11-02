@@ -4,13 +4,13 @@ import (
 	"net/http"
 
 	"github.com/LSaints/go-modular-mvc/internal/core/user-management/features/find_all/use_case"
-	"github.com/gin-gonic/gin"
+	"github.com/LSaints/go-modular-mvc/internal/shared/http/interfaces"
 )
 
-func GetAllUsers(c *gin.Context) {
+func GetAllUsers(ctx interfaces.Context) {
 	users, _ := use_case.GetAllUsers()
 
-	c.HTML(http.StatusOK, "list.html", gin.H{
+	ctx.HTML(http.StatusOK, "list.html", map[string]interface{}{
 		"users": users,
 	})
 }

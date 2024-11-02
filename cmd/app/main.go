@@ -6,7 +6,8 @@ import (
 	user_management "github.com/LSaints/go-modular-mvc/internal/core/user-management"
 	server_vars "github.com/LSaints/go-modular-mvc/internal/shared/config/env_vars/load_server_vars"
 	"github.com/LSaints/go-modular-mvc/internal/shared/database"
-	"github.com/gin-gonic/gin"
+	"github.com/LSaints/go-modular-mvc/internal/shared/http/adapters"
+	"github.com/LSaints/go-modular-mvc/internal/shared/http/interfaces"
 )
 
 func main() {
@@ -17,11 +18,17 @@ func main() {
 		panic(err)
 	}
 
-	r := gin.Default()
-	loadModules(r)
-	r.Run(fmt.Sprintf(":%s", server_vars.SERVER_PORT))
+	router := adapters.NewGinRouter()
+	if router == nil {
+		panic("Falha ao criar GinRouter")
+	}
+	loadModules(router)
+	err = router.Run(fmt.Sprintf(":%s", server_vars.SERVER_PORT))
+	if err != nil {
+		panic(err)
+	}
 }
 
-func loadModules(r *gin.Engine) {
+func loadModules(r interfaces.Router) {
 	user_management.Load(r)
 }
