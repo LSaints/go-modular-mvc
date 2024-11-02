@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/LSaints/go-modular-mvc/internal/core/user-management/domain"
-	"github.com/LSaints/go-modular-mvc/internal/core/user-management/features/create/use_case"
+	usecase "github.com/LSaints/go-modular-mvc/internal/core/user-management/features/create/use_case"
 	"github.com/LSaints/go-modular-mvc/internal/shared/http/interfaces"
 )
 
@@ -18,7 +18,7 @@ func RegisterUser(ctx interfaces.Context) {
 		return
 	}
 
-	userID, err := use_case.RegisterUser(user)
+	userID, err := usecase.RegisterUser(user)
 	if err != nil {
 		ctx.HTML(http.StatusInternalServerError, "error.html", map[string]interface{}{"error": err.Error()})
 		fmt.Println(err)

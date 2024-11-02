@@ -1,4 +1,4 @@
-package load_server_vars
+package loadsrvvars
 
 import (
 	"log"

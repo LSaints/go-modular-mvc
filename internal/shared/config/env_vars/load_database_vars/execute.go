@@ -1,4 +1,4 @@
-package load_database_vars
+package loaddbvars
 
 import (
 	"log"

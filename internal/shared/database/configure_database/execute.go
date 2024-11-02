@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 
-	database_vars "github.com/LSaints/go-modular-mvc/internal/shared/config/env_vars/load_database_vars"
+	loaddbvars "github.com/LSaints/go-modular-mvc/internal/shared/config/env_vars/load_database_vars"
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -29,15 +29,15 @@ func NewDatabase(driver string, user string, url string, pass string, port strin
 }
 
 func GetDbConn() (*sql.DB, error) {
-	database_vars.Execute()
+	loaddbvars.Execute()
 
 	db := NewDatabase(
-		database_vars.DRIVER_DB,
-		database_vars.MYSQL_USER,
-		database_vars.MYSQL_URL,
-		database_vars.MYSQL_PASSWORD,
-		database_vars.MYSQL_PORT,
-		database_vars.MYSQL_DB,
+		loaddbvars.DRIVER_DB,
+		loaddbvars.MYSQL_USER,
+		loaddbvars.MYSQL_URL,
+		loaddbvars.MYSQL_PASSWORD,
+		loaddbvars.MYSQL_PORT,
+		loaddbvars.MYSQL_DB,
 	)
 
 	dbConn, err := sql.Open(db.Driver, getConnectionString(db))

@@ -1,4 +1,4 @@
-package user_management
+package usermanagement
 
 import (
 	"os"
