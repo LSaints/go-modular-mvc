@@ -4,6 +4,7 @@ type Router interface {
 	Group(prefix string) Router
 	GET(path string, hanlder Handler)
 	POST(path string, hanlder Handler)
+	PUT(path string, handler Handler)
 	DELETE(path string, handler Handler)
 	LoadHTMLFiles(files ...string) error
 	Run(addr string) error

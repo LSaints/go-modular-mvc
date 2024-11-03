@@ -42,6 +42,12 @@ func (g *GinRouter) DELETE(path string, handler interfaces.Handler) {
 	})
 }
 
+func (g *GinRouter) PUT(path string, handler interfaces.Handler) {
+	g.engine.PUT(path, func(ctx *gin.Context) {
+		handler(&GinContext{ctx})
+	})
+}
+
 func (g *GinRouter) LoadHTMLFiles(files ...string) error {
 	if g.engine == nil {
 		return fmt.Errorf("GinRouter não está inicializado")
