@@ -5,6 +5,7 @@ import (
 	"path/filepath"
 
 	createRoute "github.com/LSaints/go-modular-mvc/internal/core/user-management/features/create/http"
+	deleteUser "github.com/LSaints/go-modular-mvc/internal/core/user-management/features/delete/http"
 	findAllRoute "github.com/LSaints/go-modular-mvc/internal/core/user-management/features/find_all/http"
 	"github.com/LSaints/go-modular-mvc/internal/shared/http/interfaces"
 )
@@ -17,6 +18,8 @@ func Load(r interfaces.Router) {
 func registerRoutes(r interfaces.Router) {
 	findAllRoute.LoadRoutes(r)
 	createRoute.LoadRoutes(r)
+	deleteUser.LoadRoutes(r)
+
 }
 
 func loadViews(r interfaces.Router) error {
