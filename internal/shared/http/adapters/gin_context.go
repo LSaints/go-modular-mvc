@@ -16,6 +16,10 @@ func (g *GinContext) HTML(code int, view string, data interface{}) {
 	g.Context.HTML(code, view, data)
 }
 
+func (g *GinContext) Query(name string) string {
+	return g.Context.Query(name)
+}
+
 func (g *GinContext) ShouldBind(obj any) error {
 	err := g.Context.ShouldBind(obj)
 	if err != nil {
