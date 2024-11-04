@@ -27,3 +27,16 @@ func (g *GinContext) ShouldBind(obj any) error {
 	}
 	return nil
 }
+
+func (g *GinContext) FormValue(name string) string {
+	return g.Context.PostForm(name)
+
+}
+
+func (g *GinContext) Redirect(code int, location string) {
+	g.Context.Redirect(code, location)
+}
+
+func (g *GinRouter) Run(addr string) error {
+	return g.engine.Run(addr)
+}

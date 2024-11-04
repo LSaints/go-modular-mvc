@@ -56,14 +56,6 @@ func (g *GinRouter) LoadHTMLFiles(files ...string) error {
 	return nil
 }
 
-func (g *GinContext) FormValue(name string) string {
-	return g.Context.PostForm(name)
-}
-
-func (g *GinContext) Redirect(code int, location string) {
-	g.Context.Redirect(code, location)
-}
-
-func (g *GinRouter) Run(addr string) error {
-	return g.engine.Run(addr)
+func (g *GinRouter) Static(relativePath string, path string) {
+	g.engine.Static(relativePath, path)
 }

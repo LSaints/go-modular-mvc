@@ -7,6 +7,7 @@ type Router interface {
 	PUT(path string, handler Handler)
 	DELETE(path string, handler Handler)
 	LoadHTMLFiles(files ...string) error
+	Static(relativePath string, path string)
 	Run(addr string) error
 }
 
