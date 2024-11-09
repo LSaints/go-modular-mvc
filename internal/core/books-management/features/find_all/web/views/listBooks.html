@@ -1,40 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Usuários</title>
+    <title>Lista de Livros</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <script src="/static/js/htmx.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1 class="mt-5">Lista de Usuários</h1>
+        <h1 class="mt-5">Lista de Livros</h1>
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nome</th>
-                    <th>Email</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Ano de Publicação</th>
                     <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
-                {{ range .users }}
+                {{ range .livros }}
                 <tr>
                     <td>{{ .ID }}</td>
-                    <td>{{ .Name }}</td>
-                    <td>{{ .Email }}</td>
+                    <td>{{ .Titulo }}</td>
+                    <td>{{ .Autor }}</td>
+                    <td>{{ .AnoPublicacao }}</td>
                     <td>
-                        <a href="/users/update/{{ .ID }}" class="btn btn-warning">Editar</a>
+                        <a href="/livros/editar/{{ .ID }}" class="btn btn-warning">Editar</a>
                         <button class="btn btn-danger"
-                                hx-delete="/users/{{ .ID }}"
+                                hx-delete="/livros/{{ .ID }}"
                                 hx-target="closest tr"
                                 hx-swap="outerHTML"
-                                onclick="return confirm('Você tem certeza que deseja remover o usuário: {{ .Name }}?');">
+                                onclick="return confirm('Você tem certeza que deseja remover o livro: {{ .Titulo }}?');">
                             Remover
                         </button>
-
                     </td>
                 </tr>
                 {{ end }}
@@ -42,8 +43,7 @@
         </table>
     </div>
     <div class="container">
-        <a href="/users/register" class="btn btn-primary">Create Another User</a>
-        <a href="/books" class="btn btn-primary">View all books</a>
+        <a href="/books/register" class="btn btn-primary">Cadastrar Novo Livro</a>
     </div>
 </body>
 </html>

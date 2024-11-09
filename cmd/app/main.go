@@ -22,6 +22,10 @@ func Init(r interfaces.Router) {
 
 func main() {
 	err := loadsrvvars.Execute()
+	if err != nil {
+		panic(err)
+	}
+
 	_, err = database.Load()
 
 	if err != nil {
@@ -74,7 +78,24 @@ func loadViews(r interfaces.Router) error {
 	// feature: find all
 	BooksfindAllPage := filepath.Join(currentDir, "internal", "core", "books-management", "features", "find_all", "web", "views", "listBooks.html")
 
-	r.LoadHTMLFiles(UserfindAllPage, UsercreatePage, UsersuccessPage, UsererrorPage, UserupdatePage, UsererrorUpdatePage, UsersuccessUpdatePage, BooksfindAllPage)
+	// feature: create
+	BooksCreate := filepath.Join(currentDir, "internal", "core", "books-management", "features", "create", "web", "views", "register.html")
+	BooksError := filepath.Join(currentDir, "internal", "core", "books-management", "features", "create", "web", "views", "error.html")
+	BooksSuccess := filepath.Join(currentDir, "internal", "core", "books-management", "features", "create", "web", "views", "success.html")
+
+	r.LoadHTMLFiles(
+		UserfindAllPage,
+		UsercreatePage,
+		UsersuccessPage,
+		UsererrorPage,
+		UserupdatePage,
+		UsererrorUpdatePage,
+		UsersuccessUpdatePage,
+		BooksfindAllPage,
+		BooksCreate,
+		BooksSuccess,
+		BooksError,
+	)
 
 	return nil
 }

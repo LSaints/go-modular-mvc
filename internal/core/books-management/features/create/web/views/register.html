@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Livro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Registrar Livro</h1>
+        <form action="/books/register" method="POST" class="mt-4">
+            <div class="mb-3">
+                <label for="titulo" class="form-label">Título:</label>
+                <input type="text" id="titulo" name="titulo" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="autor" class="form-label">Autor:</label>
+                <input type="text" id="autor" name="autor" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="anoPublicacao" class="form-label">Ano de Publicação:</label>
+                <input type="number" id="anoPublicacao" name="anoPublicacao" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="descricao" class="form-label">Descrição:</label>
+                <textarea id="descricao" name="descricao" class="form-control" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+        <div class="mt-3">
+            <a href="/books" class="btn btn-secondary">Voltar para Lista de Livros</a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
