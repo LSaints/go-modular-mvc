@@ -1,5 +1,28 @@
 version: '3.8'
+
 services:
+  go-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: go-app
+    ports:
+      - "8080:8080"
+    restart: always
+    environment:
+      - SERVER_PORT=8080
+      - SERVER_URL=go-app
+      - DRIVER_DB=mysql
+      - MYSQL_URL=db
+      - MYSQL_DB=${MYSQL_DB}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    depends_on:
+      - db
+    networks:
+      - app-network
+
   db:
     image: mysql/mysql-server:latest
     container_name: mysql
@@ -7,14 +30,21 @@ services:
     environment:
       - MYSQL_DATABASE=${MYSQL_DB}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_USER=${MYSQL_USER}           
+      - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     ports:
-      - '${MYSQL_PORT}:3306'
+      - "${MYSQL_PORT}:3306"
     volumes:
       - mysql-volume:/var/lib/mysql
       - ./internal/core/user-management/sql/init.sql:/docker-entrypoint-initdb.d/user.sql
       - ./internal/core/books-management/sql/init.sql:/docker-entrypoint-initdb.d/books.sql
+    networks:
+      - app-network
+
 volumes:
   mysql-volume:
     driver: local
+
+networks:
+  app-network:
+    driver: bridge

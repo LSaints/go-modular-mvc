@@ -17,6 +17,7 @@
 # Dependency directories
 /go.sum
 /go.mod
+/build
 
 # Environment files
 .env
@@ -42,3 +43,4 @@
 *~
 *.tmp
 *.bak
+
